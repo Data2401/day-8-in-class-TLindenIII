@@ -2,7 +2,10 @@
 title: "Lists - In Class Exercises"
 author: "Dr. Shoemaker"
 date: "DATA 2401"
-output:nhtml_document
+output: 
+  html_document:
+    highlight: zenburn
+    theme: paper
 
 ---
 
@@ -11,39 +14,44 @@ output:nhtml_document
 Make a list that contains the information on a single playing card. Suit, face, and value. 
 
 ```{r}
-
-
+cards <- list(
+  suits = c("Hearts", "Spades", "Diamonds", "Clubs"),
+  face = c("Jack", "Queen", "King"),
+  value = c(as.character(2:10), "Ace")
+)
+cards
 ```
 
 
 Make a second list where each element contains all the options for suit, face, and value, respectively. 
 
 ```{r}
-
-
+rank <- c(cards$face, cards$value)
+options <- expand.grid(Suit = cards$suits, Rank = rank)
+options
 ```
 
 
 If `Newlist <- list(a=1:10, b="Good morning", c="Hi")`, write an R statement that will add 1 to each element of the first vector in Newlist.
 
 ```{r}
-Newlist <- list(a=1:10, b="Good morning", c="Hi")
-
-
+Newlist <- list(a = 1:10, b = "Good morning", c = "Hi")
+Newlist$a <- Newlist[[1]] + 1
+Newlist
 ```
 
 If `b <- list(a=1:10, c="Hello", d="AA")`, write an R expression that will give all elements of the first vector of b, except the second, and write another that returns only elements of `a` that are greater than 7.
 
 ```{r}
-b <- list(a=1:10, c="Hello", d="AA")
-
-
+b <- list(a = 1:10, c = "Hello", d = "AA")
+b$a[-2]
+b$a[b$a > 7]
 ```
 
 Let `x <- list(a=5:10, c="Hello", d="AA")`, write an R statement to add a new item z = "NewItem" to the list x.
 
 ```{r}
-x <- list(a=5:10, c="Hello", d="AA")
-
-
+x <- list(a = 5:10, c = "Hello", d = "AA")
+x$z <- "NewItem"
+x
 ```
